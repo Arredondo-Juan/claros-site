@@ -12,7 +12,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Inter:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -22,10 +22,11 @@
   <symbol id="arch" viewBox="0 0 48 48"><path d="M34.6 13.4 A15 15 0 1 0 34.6 34.6" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/><circle cx="37" cy="24" r="4" fill="#F2A93B"/></symbol>
 </svg>
 
-<header class="nav pad">
+<header class="nav wrap">
   <a class="logo" href="#top" aria-label="Claros home"><svg aria-hidden="true"><use href="#arch"/></svg>Claros</a>
   <ul>
     <li class="link"><a href="#how">How it works</a></li>
+    <li class="link"><a href="#viewer">Viewer</a></li>
     <li class="link"><a href="#pricing">Pricing</a></li>
     <li class="link"><a href="#faq">Questions</a></li>
     <li><a class="btn" href="#join">Join the pilot</a></li>
@@ -33,145 +34,154 @@
 </header>
 
 <main id="top">
-  <div class="split pad">
-    <div class="hero" data-step="hero">
-      <h1>Every scan, made&nbsp;clear.</h1>
-      <p class="lead">Send a CBCT or pano to any specialist in a few taps. They open it in 3D in their browser, with no CD and no account. Plain-language radiology reads are coming next.</p>
-      <div class="act">
+
+  <!-- Hero: the headline upper left, the product on a blue stage that bleeds off the right edge -->
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="hero-copy wrap">
+      <h1 id="hero-h" class="rise">Every scan, made&nbsp;clear.</h1>
+      <p class="lead rise">Send a CBCT or pano to any specialist in a few taps. They open it in 3D in their browser, with no CD and no account. Plain-language radiology reads are coming next.</p>
+      <div class="act rise">
         <a class="btn" href="#join">Join the pilot</a>
-        <a href="#how">See how it works</a>
+        <a class="tlink" href="#how">See how it works</a>
       </div>
-      <p class="note">Founding offices get 90 days free, then $99 a month, locked for good.</p>
+      <p class="note rise">Founding offices get 90 days free, then $99 a month, locked for good.</p>
     </div>
 
-    <aside class="stage" aria-label="Example of Claros">
-      <figure class="scanbox">
+    <div class="stage" aria-label="Example of Claros">
+      <figure class="stage-shot shutter">
         <picture>
           <source srcset="img/claros-2x2.webp" type="image/webp">
           <img src="img/claros-2x2.jpg" width="1600" height="1094" alt="The Claros viewer showing a CBCT scan in coronal, sagittal and axial slices beside a 3D rendering of the jaw">
         </picture>
-        <figcaption class="cap">The Claros viewer with a de-identified CBCT. The read below is a made-up example.</figcaption>
       </figure>
-      <div class="layers">
-        <div class="layer on" data-for="hero">
-          <div class="card" data-ui>
-            <div class="row"><span>Read preview · Example</span><span class="soon">Coming next</span></div>
-            <div class="seg" role="group" aria-label="Who this read is written for">
-              <button type="button" aria-pressed="true" data-mode="doc">For the dentist</button>
-              <button type="button" aria-pressed="false" data-mode="pt">For the patient</button>
-            </div>
-            <div class="finding" aria-live="polite">
-              <span class="t" data-doc="#19 · 4.2 mm" data-pt="Lower left back tooth">#19 · 4.2 mm</span>
-              <strong data-doc="Dark area at the root tip" data-pt="A small spot at the end of a root">Dark area at the root tip</strong>
-              <p data-doc="Most likely a periapical abscess or granuloma. Suggest a vitality test and comparing with prior films." data-pt="It looks like a small infection-like area. Your dentist will check the tooth and talk through your options.">Most likely a periapical abscess or granuloma. Suggest a vitality test and comparing with prior films.</p>
-            </div>
-          </div>
-        </div>
 
-        <div class="layer" data-for="send">
-          <div class="card" data-ui>
-            <div class="ttl">Send a scan</div>
-            <div class="file">
-              <div class="row"><span>CBCT_lower_left.dcm</span><span>412 MB · Uploaded</span></div>
-              <div class="bar"><i></i></div>
-            </div>
-            <span class="lbl">Send to</span>
-            <div class="fld">Dr. Example · Endodontics</div>
-            <span class="lbl">Note</span>
-            <div class="fld">#19 is sore when biting. Please take a look.</div>
-            <span class="uibtn">Send scan</span>
-          </div>
+      <!-- The live thing: press Send scan and watch it go out, get opened and answered. Example data only. -->
+      <div class="sender" data-ui data-demo>
+        <div class="s-head">
+          <span class="s-title">Send a scan</span>
+          <span class="s-tag">Example</span>
         </div>
-
-        <div class="layer" data-for="open">
-          <div class="card" data-ui>
-            <div class="ttl">Your sent scans</div>
-            <div class="list">
-              <div class="it"><span class="nm">Lower left CBCT</span><span class="pill ready">Opened</span><span class="sub">To Dr. Example · Endodontics</span></div>
-              <div class="it"><span class="nm">Full mouth pano</span><span class="pill wait">Sent</span><span class="sub">To Dr. Sample · Oral surgery</span></div>
-            </div>
-            <div class="mail"><b>Reply from Dr. Example</b><span>Got it. I can see the patient Thursday.</span></div>
-          </div>
+        <div class="s-file">
+          <div class="s-row"><span class="s-name">CBCT_lower_left.dcm</span><span class="s-size">412 MB</span></div>
+          <div class="s-bar"><i></i></div>
         </div>
-
-        <div class="layer" data-for="read">
-          <div class="card" data-ui>
-            <div class="row"><span>For your patient · Example</span><span class="soon">Coming next</span></div>
-            <div class="ttl">Your scan, explained</div>
-            <p class="pt">Your dentist asked a radiology specialist to look at your scan. They found a small spot at the end of one root on a lower left back tooth. Your dentist will check the tooth and talk through your options.</p>
-            <span class="uibtn">Share with patient</span>
-          </div>
+        <dl class="s-fields">
+          <div><dt>Send to</dt><dd>Dr. Example · Endodontics</dd></div>
+          <div><dt>Note</dt><dd>#19 is sore when biting. Please take a look.</dd></div>
+        </dl>
+        <div class="s-foot">
+          <button type="button" class="s-btn">Send again</button>
+          <span class="s-status is-opened" aria-live="polite">Opened in 3D</span>
         </div>
-      </div>
-    </aside>
-
-    <div class="steps" id="how">
-      <div class="intro rise">
-        <h2>How it works</h2>
-        <p>Everything happens in the browser, for the office and the specialist. Nothing to install.</p>
-      </div>
-      <div class="step rise" data-step="send">
-        <h3>Send the scan.</h3>
-        <p>Export the CBCT or pano from the imaging software you already use and drag it into Claros. Pick the specialist, add a note, and send.</p>
-        <p class="small">Big files pick up where they left off if the connection drops.</p>
-      </div>
-      <div class="step rise" data-step="open">
-        <h3>They open it in 3D.</h3>
-        <p>The specialist opens the scan with a one-time code and sees it in full 3D, right in their browser. No account, no software, and they never pay. You see when it's opened, and their reply comes back to you.</p>
-      </div>
-      <div class="step rise" data-step="read">
-        <h3>Clear reads, next. <span class="soon">Coming next</span></h3>
-        <p>Next, Claros adds radiology reads on the same upload: each finding in plain words, what it most likely is, a suggested next step, and a version you can show the patient.</p>
-        <p class="small">Reads launch once licensed oral and maxillofacial radiologists are signed on.</p>
+        <div class="s-reply">
+          <div class="s-got"><b>Reply from Dr. Example</b><span>Got it. I can see the patient Thursday.</span></div>
+          <div class="s-wait"><b>No reply yet</b><span>You'll see it here when the specialist opens the scan.</span></div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <section class="band viewer pad" id="viewer" aria-labelledby="viewer-h">
-    <div class="vhead rise">
-      <h2 class="h2" id="viewer-h">See every slice, in the browser.</h2>
-      <p>This is the Claros viewer today. Coronal, sagittal and axial slices sit beside a 3D rendering, with measuring, contrast and notes built in. Specialists open it with a one-time code, with nothing to install.</p>
+  <!-- How it works: the same scan card, further along in each field -->
+  <section class="how" id="how" aria-labelledby="how-h">
+    <div class="field f1">
+      <h2 id="how-h" class="how-h rise">How it works</h2>
+      <div class="ticket rise" data-ui>
+        <div class="t-top"><span class="t-name">Lower left CBCT</span><span class="t-state st-up">Uploaded</span></div>
+        <span class="t-sub">CBCT_lower_left.dcm · 412 MB</span>
+      </div>
+      <div class="clause rise">
+        <p class="c-big">First, drag the scan in.</p>
+        <p class="c-small">Export the CBCT or pano from the imaging software you already use. Big files pick up where they left off if the connection drops.</p>
+      </div>
     </div>
-    <div class="shots">
-      <figure class="shot rise">
+    <div class="field f2">
+      <div class="ticket rise" data-ui>
+        <div class="t-top"><span class="t-name">Lower left CBCT</span><span class="t-state st-sent">Sent</span></div>
+        <span class="t-sub">To Dr. Example · Endodontics</span>
+        <span class="t-note">#19 is sore when biting. Please take a look.</span>
+      </div>
+      <div class="clause rise">
+        <p class="c-big">Then pick the specialist.</p>
+        <p class="c-small">Add a note and send. Everything happens in the browser, with nothing to install.</p>
+      </div>
+    </div>
+    <div class="field f3">
+      <div class="ticket rise" data-ui>
+        <div class="t-top"><span class="t-name">Lower left CBCT</span><span class="t-state st-open">Opened</span></div>
+        <span class="t-sub">To Dr. Example · Endodontics</span>
+        <span class="t-note">Opened in 3D with a one-time code</span>
+      </div>
+      <div class="clause rise">
+        <p class="c-big">They open it in&nbsp;3D.</p>
+        <p class="c-small">Right in their browser, with a one-time code. No account, no software, and they never pay.</p>
+      </div>
+    </div>
+    <div class="field f4">
+      <div class="ticket rise" data-ui>
+        <div class="t-top"><span class="t-name">Lower left CBCT</span><span class="t-state st-open">Opened</span></div>
+        <span class="t-sub">To Dr. Example · Endodontics</span>
+        <div class="t-reply"><b>Reply from Dr. Example</b>Got it. I can see the patient Thursday.</div>
+      </div>
+      <div class="clause rise">
+        <p class="c-big">And the reply comes back.</p>
+        <p class="c-small">You see when it's opened, and their answer lands with you. No phone calls to find out if it arrived.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Viewer: the real screenshot opens from a window to the full width as you scroll -->
+  <section class="viewer" id="viewer" aria-labelledby="viewer-h">
+    <div class="wrap v-head">
+      <h2 class="h2 rise" id="viewer-h">See every slice, in the browser.</h2>
+      <p class="rise">This is the Claros viewer today. Coronal, sagittal and axial slices sit beside a 3D rendering, with measuring, contrast and notes built in. Specialists open it with a one-time code, with nothing to install.</p>
+    </div>
+    <div class="opening">
+      <figure class="opening-stage">
         <picture>
           <source srcset="img/claros-viewer.webp" type="image/webp">
           <img src="img/claros-viewer.jpg" width="1600" height="1097" alt="The Claros viewer showing coronal, sagittal and axial CBCT slices and a 3D rendering of the skull" loading="lazy">
         </picture>
-        <figcaption>All three planes and 3D, side by side.</figcaption>
       </figure>
-      <figure class="shot rise">
+    </div>
+    <div class="wrap v-row">
+      <div class="v-text rise">
+        <h3>Measure it, mark it, keep&nbsp;it.</h3>
+        <p>Measurements and marks are saved with the case, so the specialist sees exactly what you saw.</p>
+        <p class="small">Screenshots from the Claros app with a de-identified CBCT scan.</p>
+      </div>
+      <figure class="v-shot rise">
         <picture>
           <source srcset="img/claros-measure.webp" type="image/webp">
           <img src="img/claros-measure.jpg" width="1600" height="1145" alt="The Claros viewer with a large axial slice and a 5.0 mm measurement on a molar, saved with the case" loading="lazy">
         </picture>
-        <figcaption>Measurements and marks are saved with the case.</figcaption>
       </figure>
     </div>
-    <p class="shotnote">Screenshots from the Claros app with a de-identified CBCT scan.</p>
   </section>
 
-  <section class="band pad" id="read" aria-labelledby="get-h">
-    <div class="get">
-      <div class="left rise">
-        <h2 class="h2" id="get-h">The clear read <span class="soon">Coming next</span></h2>
-        <p>Here's what a Claros read will look like. Each one comes as three things. Pick one to see it. These are made-up examples, not a real case.</p>
-        <ul class="idx" role="tablist" aria-label="Parts of a Claros read">
-          <li><button type="button" role="tab" id="tab-read" aria-controls="sheet-read" aria-selected="true">The read</button></li>
-          <li><button type="button" role="tab" id="tab-pt" aria-controls="sheet-pt" aria-selected="false" tabindex="-1">The patient page</button></li>
-          <li><button type="button" role="tab" id="tab-mail" aria-controls="sheet-mail" aria-selected="false" tabindex="-1">The ready email</button></li>
-        </ul>
+  <!-- The clear read (coming next): one sheet, three versions -->
+  <section class="read" id="read" aria-labelledby="read-h">
+    <div class="wrap r-grid">
+      <div class="r-text">
+        <h2 class="h2 rise" id="read-h">The clear read, coming&nbsp;next.</h2>
+        <p class="rise">Next, Claros adds radiology reads on the same upload: each finding in plain words, what it most likely is, a suggested next step, and a version you can show the patient.</p>
+        <p class="small rise">Reads launch once licensed oral and maxillofacial radiologists are signed on. The read shown here is a made-up example, not a real case.</p>
       </div>
-      <div class="sheetstage">
+      <div class="r-stage rise">
+        <div class="seg" role="tablist" aria-label="Parts of a Claros read">
+          <button type="button" role="tab" id="tab-read" aria-controls="sheet-read" aria-selected="true">Read</button>
+          <button type="button" role="tab" id="tab-pt" aria-controls="sheet-pt" aria-selected="false" tabindex="-1">Patient page</button>
+          <button type="button" role="tab" id="tab-mail" aria-controls="sheet-mail" aria-selected="false" tabindex="-1">Ready email</button>
+        </div>
+
         <article class="sheet" id="sheet-read" role="tabpanel" aria-labelledby="tab-read" data-ui>
-          <div class="sh"><span class="logo"><svg aria-hidden="true"><use href="#arch"/></svg>Claros</span><span class="lbl">Radiology read · Example</span></div>
+          <div class="sh"><span class="sh-logo"><svg aria-hidden="true"><use href="#arch"/></svg>Claros</span><span class="sh-lbl">Radiology read · Example</span></div>
           <div class="meta">
             <span>Scan <b>CBCT, 8 × 8 cm</b></span><span>Area <b>Lower left</b></span>
             <span>Patient <b>Example patient</b></span><span>Read by <b>Example reader</b></span>
           </div>
-          <h3>Summary</h3>
+          <h4>Summary</h4>
           <p class="sum">One finding needs follow-up: a dark area at the root tip of #19. Everything else on the scan looks normal for this patient's age.</p>
-          <div class="finding">
+          <div class="finding hot">
             <span class="t">#19 · 4.2 mm</span>
             <strong>Dark area at the root tip</strong>
             <p>Most likely a periapical abscess or granuloma. Suggest a vitality test and comparing with prior films.</p>
@@ -190,10 +200,10 @@
         </article>
 
         <article class="sheet" id="sheet-pt" role="tabpanel" aria-labelledby="tab-pt" data-ui hidden>
-          <div class="sh"><span class="logo"><svg aria-hidden="true"><use href="#arch"/></svg>Claros</span><span class="lbl">For the patient · Example</span></div>
-          <h3>Your scan, explained</h3>
+          <div class="sh"><span class="sh-logo"><svg aria-hidden="true"><use href="#arch"/></svg>Claros</span><span class="sh-lbl">For the patient · Example</span></div>
+          <h4>Your scan, explained</h4>
           <p class="sum">Your dentist asked a radiology specialist to look at your 3D scan. Here's what they found, in plain words.</p>
-          <div class="finding">
+          <div class="finding hot">
             <span class="t">Lower left back tooth</span>
             <strong>A small spot at the end of a root</strong>
             <p>It looks like a small infection-like area. Your dentist will test the tooth and talk through your options.</p>
@@ -213,7 +223,7 @@
 
         <article class="sheet mailsheet" id="sheet-mail" role="tabpanel" aria-labelledby="tab-mail" data-ui hidden>
           <div class="from"><b>Claros</b><span>To: front desk at your office</span><span>Subject: Your read is ready</span></div>
-          <h3>Your read is ready</h3>
+          <h4>Your read is ready</h4>
           <p class="sum">The read for <b>Lower left CBCT</b> is ready. One finding needs follow-up.</p>
           <span class="uibtn">View read</span>
           <p class="next">Sent when the read is done.</p>
@@ -222,90 +232,121 @@
     </div>
   </section>
 
-  <section class="band who pad" id="who" aria-labelledby="who-h">
-    <div class="grid">
-      <div class="rise">
-        <h2 class="h2" id="who-h">Who it's for</h2>
-        <p class="state">Offices that take 3D scans and still burn them to CDs to reach a specialist.</p>
+  <!-- Who it's for: the heading held on the left, a small proof beside each reader on the right -->
+  <section class="who" id="who" aria-labelledby="who-h">
+    <div class="wrap w-grid">
+      <div class="w-side">
+        <h2 class="h2 rise" id="who-h">Who it's for</h2>
+        <p class="state rise">Offices that take 3D scans and still burn them to CDs to reach a specialist.</p>
       </div>
-      <div class="rise">
-        <dl>
-          <div><dt>General dentists</dt><dd>Get a scan to the right specialist the same day, without a CD or a patient driving it across town. Plain-language reads are coming next.</dd></div>
-          <div><dt>Office managers</dt><dd>Send a scan in a few clicks and see when it's been opened. No phone calls to find out if it arrived.</dd></div>
-          <div><dt>Specialists</dt><dd>Open referred scans in 3D in your browser, with a one-time code. Free, with no account to set up.</dd></div>
-          <div><dt>Groups and DSOs</dt><dd>Running several offices? We'd like to hear what you need across them.</dd></div>
-        </dl>
-        <div class="made">
-          <svg aria-hidden="true"><use href="#arch"/></svg>
-          <p>Claros is built by Juan Arredondo, who spent over six years in dental offices as a patient coordinator, dental assistant and office manager. Every screen has to pass one test: could the front desk use it without a manual?</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band pricing pad" id="pricing" aria-labelledby="pricing-h">
-    <div class="head rise">
-      <h2 class="h2" id="pricing-h">Pricing</h2>
-      <p>One monthly price per office. It covers sending and viewing scans for your whole team. Specialists never pay to open a scan. When radiology reads launch, they'll be billed per scan.</p>
-    </div>
-    <div class="plans">
-      <div class="plan founder">
-        <h3>Founding offices</h3>
-        <p class="for">For the first offices that help us shape Claros during the pilot.</p>
-        <p class="inc muted">Try everything free for 90 days. After that, your price stays at $99 a month for as long as you're with us.</p>
-        <div class="foot">
-          <div>
-            <p class="price-pre"><b>90 days free</b>, then</p>
-            <p class="price">$99<small>/month</small></p>
+      <div class="w-list">
+        <div class="mod rise">
+          <div class="panel">
+            <div class="mini" data-ui>
+              <span class="m-row"><b>Lower left CBCT</b><span class="t-state st-sent">Sent</span></span>
+              <span class="m-sub">To Dr. Example · Endodontics</span>
+            </div>
           </div>
-          <a class="btn light" href="#join">Join the pilot</a>
-        </div>
-      </div>
-      <div class="plan standard">
-        <h3>Standard</h3>
-        <p class="for">For offices that join after the pilot.</p>
-        <p class="inc muted">Everything in Claros for your whole office team.</p>
-        <div class="foot">
-          <div>
-            <p class="price-pre">Per office</p>
-            <p class="price">$199<small>/month</small></p>
+          <div class="m-text">
+            <h3>General dentists</h3>
+            <p>Get a scan to the right specialist the same day, without a CD or a patient driving it across town. Plain-language reads are coming next.</p>
           </div>
-          <a class="btn" href="#faq">Questions</a>
+        </div>
+        <div class="mod rise">
+          <div class="panel">
+            <div class="mini" data-ui>
+              <span class="m-row"><b>Lower left CBCT</b><span class="t-state st-open">Opened</span></span>
+              <span class="m-row"><b>Full mouth pano</b><span class="t-state st-sent">Sent</span></span>
+            </div>
+          </div>
+          <div class="m-text">
+            <h3>Office managers</h3>
+            <p>Send a scan in a few clicks and see when it's been opened. No phone calls to find out if it arrived.</p>
+          </div>
+        </div>
+        <div class="mod rise">
+          <div class="panel pic">
+            <picture>
+              <source srcset="img/claros-2x2.webp" type="image/webp">
+              <img src="img/claros-2x2.jpg" width="1600" height="1094" alt="Close crop of the Claros viewer's 3D rendering of the jaw" loading="lazy">
+            </picture>
+          </div>
+          <div class="m-text">
+            <h3>Specialists</h3>
+            <p>Open referred scans in 3D in your browser, with a one-time code. Free, with no account to set up.</p>
+          </div>
+        </div>
+        <div class="mod rise">
+          <div class="panel dark">
+            <p class="p-type">Several offices, one place to send from.</p>
+          </div>
+          <div class="m-text">
+            <h3>Groups and DSOs</h3>
+            <p>Running several offices? We'd like to hear what you need across them.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="band faq pad" id="faq" aria-labelledby="faq-h">
-    <div class="grid">
-      <h2 class="h2 rise" id="faq-h">Questions</h2>
-      <div class="cols rise">
-        <p><b>What scans can we send?</b> CBCT scans and panoramic X-rays, exported from your imaging software as DICOM files.</p>
-        <p><b>Does the specialist need an account?</b> No. They open the scan with a one-time code, see it in 3D in their browser, and never pay.</p>
-        <p><b>Do we need new software or equipment?</b> No. Claros runs in a web browser. Keep your scanner and imaging software, export the scan, and upload it.</p>
-        <p><b>Who reads our scans?</b> Today, you send each scan to the specialist you choose. Claros radiology reads launch once licensed oral and maxillofacial radiologists are signed on.</p>
-        <p><b>Is patient information protected?</b> Before any real patient scan is sent, we sign a business associate agreement with your office.</p>
-        <p><b>Is a read a diagnosis?</b> No. A read supports your diagnosis. The treating dentist always makes the call.</p>
-        <p><b>What does the pilot ask of us?</b> Use Claros on real cases and tell us what's confusing or missing.</p>
-        <p><b>What happens after 90 days?</b> You move to founder pricing, $99 a month, and keep it for as long as you stay.</p>
-        <p><b>We have several offices. Can we join?</b> Yes. We'd like to hear what each office needs.</p>
+  <!-- Pricing: plan names on the left, the selected plan's figure on the right -->
+  <section class="pricing" id="pricing" aria-labelledby="pricing-h">
+    <div class="wrap p-grid">
+      <div class="p-names">
+        <h2 class="h2 rise" id="pricing-h">Pricing</h2>
+        <p class="p-intro rise">One monthly price per office. It covers sending and viewing scans for your whole team. Specialists never pay to open a scan. When radiology reads launch, they'll be billed per scan.</p>
+        <div class="plans rise" role="group" aria-label="Plans">
+          <button type="button" class="plan" aria-pressed="true" data-plan="founder">Founding offices</button>
+          <button type="button" class="plan" aria-pressed="false" data-plan="standard">Standard</button>
+        </div>
+      </div>
+      <div class="p-stage rise" aria-live="polite">
+        <div class="p-card" data-for="founder">
+          <p class="price"><span class="fig">$99</span><span class="per">a month, after 90 days free</span></p>
+          <p class="inc">For the first offices that help us shape Claros during the pilot. Try everything free for 90 days. After that, your price stays at $99 a month for as long as you're with us.</p>
+          <a class="btn" href="#join">Join as a founding office</a>
+        </div>
+        <div class="p-card" data-for="standard" hidden>
+          <p class="price"><span class="fig">$199</span><span class="per">a month, per office</span></p>
+          <p class="inc">For offices that join after the pilot. Everything in Claros for your whole office team.</p>
+          <a class="btn ghost" href="#faq">Read the questions</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="cta pad" id="join" aria-labelledby="join-h">
-    <div class="grid">
-      <div class="left rise">
-        <h2 id="join-h">Be a founding&nbsp;office.</h2>
-        <p>We're looking for a few founding offices to pilot Claros and help shape it.</p>
+  <!-- Questions -->
+  <section class="faq" id="faq" aria-labelledby="faq-h">
+    <div class="wrap q-grid">
+      <h2 class="h2 q-h rise" id="faq-h">Questions</h2>
+      <div class="q-list">
+        <details name="faq" class="rise" open><summary>What scans can we send?</summary><p>CBCT scans and panoramic X-rays, exported from your imaging software as DICOM files.</p></details>
+        <details name="faq" class="rise"><summary>Does the specialist need an account?</summary><p>No. They open the scan with a one-time code, see it in 3D in their browser, and never pay.</p></details>
+        <details name="faq" class="rise"><summary>Do we need new software or equipment?</summary><p>No. Claros runs in a web browser. Keep your scanner and imaging software, export the scan, and upload it.</p></details>
+        <details name="faq" class="rise"><summary>Who reads our scans?</summary><p>Today, you send each scan to the specialist you choose. Claros radiology reads launch once licensed oral and maxillofacial radiologists are signed on.</p></details>
+        <details name="faq" class="rise"><summary>Is patient information protected?</summary><p>Before any real patient scan is sent, we sign a business associate agreement with your office.</p></details>
+        <details name="faq" class="rise"><summary>Is a read a diagnosis?</summary><p>No. A read supports your diagnosis. The treating dentist always makes the call.</p></details>
+        <details name="faq" class="rise"><summary>What does the pilot ask of us?</summary><p>Use Claros on real cases and tell us what's confusing or missing.</p></details>
+        <details name="faq" class="rise"><summary>What happens after 90 days?</summary><p>You move to founder pricing, $99 a month, and keep it for as long as you stay.</p></details>
+        <details name="faq" class="rise"><summary>We have several offices. Can we join?</summary><p>Yes. We'd like to hear what each office needs.</p></details>
       </div>
-      <div class="dialog">
-        <h3 id="form-h">Founding office spots</h3>
-        <ul class="perks">
+    </div>
+  </section>
+
+  <!-- Join: the request form already open on a blue field -->
+  <section class="cta" id="join" aria-labelledby="join-h">
+    <div class="wrap j-grid">
+      <div class="j-text">
+        <h2 id="join-h" class="rise">Be a founding&nbsp;office.</h2>
+        <p class="rise">We're looking for a few founding offices to pilot Claros and help shape it. We'll reply by email to talk about your office and next steps.</p>
+        <ul class="perks rise">
           <li>90 days free</li>
           <li>Then $99 a month, locked for good</li>
           <li>Specialists you send to never pay</li>
         </ul>
+      </div>
+      <div class="dialog rise" data-ui>
+        <h3 id="form-h">Founding office spots</h3>
         <!-- Contact form: sends to Formspree. Works without JavaScript too (Formspree shows its own thank-you page). -->
         <form class="contact" action="https://formspree.io/f/xkjrrqde" method="POST" aria-labelledby="form-h">
           <div class="f">
@@ -338,20 +379,19 @@
   </section>
 </main>
 
-<footer class="footer">
-  <div class="top pad">
+<footer class="footer wrap">
+  <p class="big" aria-label="Claros"><svg aria-hidden="true"><use href="#arch"/></svg>Claros</p>
+  <div class="f-line">
+    <span>Every scan, made clear.</span>
     <ul>
       <li><a href="#how">How it works</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#faq">Questions</a></li>
       <li><a href="#join">Join the pilot</a></li>
     </ul>
+    <span>© <span id="yr">2026</span> Claros</span>
   </div>
-  <div></div>
-  <div class="pad">
-    <p class="big" aria-label="Claros"><svg aria-hidden="true"><use href="#arch"/></svg>Claros</p>
-    <p class="legal"><span>© <span id="yr">2026</span> Claros</span><span>Example scans and reads on this page are illustrations, not real patient cases.</span><span>Claros reads support, and never replace, the treating dentist's diagnosis.</span></p>
-  </div>
+  <p class="legal">Example scans and reads on this page are illustrations, not real patient cases. Claros reads support, and never replace, the treating dentist's diagnosis.</p>
 </footer>
 
 <script src="script.js"></script>
